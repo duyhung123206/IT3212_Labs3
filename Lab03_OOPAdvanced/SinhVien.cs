@@ -12,8 +12,14 @@ public class SinhVien : Nguoi
         DiemTB = diem;
     }
 
+    // Ghi đè phương thức MoTa và tận dụng base.MoTa()
+    public override string MoTa()
+    {
+        return base.MoTa() + " - " + MaSV + " - " + DiemTB.ToString("N2");
+    }
+
     public void HienThi()
     {
-        Console.WriteLine($"Mã SV: {MaSV} - Họ tên: {HoTen} - Ngày sinh: {NgaySinh:dd/MM/yyyy} - Điểm TB: {DiemTB}");
+        Console.WriteLine(MoTa());
     }
 }

@@ -6,10 +6,9 @@ class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        // Khởi tạo đối tượng SinhVien (kế thừa thuộc tính của Nguoi thông qua base)
         SinhVien sv = new SinhVien("24001296", "Nguyễn Duy Hưng", new DateTime(2006, 1, 1), 8.8);
 
-        Console.WriteLine("--- KIỂM TRA KẾ THỪA NGUOI - SINHVIEN ---");
+        Console.WriteLine("--- KIỂM TRA GHI ĐÈ PHƯƠNG THỨC (OVERRIDE) ---");
         sv.HienThi();
 
         Console.ReadKey();

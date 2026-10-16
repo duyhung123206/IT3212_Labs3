@@ -10,4 +10,10 @@ public class Nguoi
         HoTen = hoTen;
         NgaySinh = ngaySinh;
     }
+
+    // Khai báo phương thức ảo virtual
+    public virtual string MoTa()
+    {
+        return HoTen + " - " + NgaySinh.ToString("dd/MM/yyyy");
+    }
 }

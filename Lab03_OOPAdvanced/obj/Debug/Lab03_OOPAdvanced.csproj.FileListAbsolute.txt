@@ -1,0 +1,7 @@
+C:\nguyenduyhung\Lab03_OOPAdvanced\Lab03_OOPAdvanced\bin\Debug\Lab03_OOPAdvanced.exe.config
+C:\nguyenduyhung\Lab03_OOPAdvanced\Lab03_OOPAdvanced\bin\Debug\Lab03_OOPAdvanced.exe
+C:\nguyenduyhung\Lab03_OOPAdvanced\Lab03_OOPAdvanced\bin\Debug\Lab03_OOPAdvanced.pdb
+C:\nguyenduyhung\Lab03_OOPAdvanced\Lab03_OOPAdvanced\obj\Debug\Lab03_OOPAdvanced.csproj.AssemblyReference.cache
+C:\nguyenduyhung\Lab03_OOPAdvanced\Lab03_OOPAdvanced\obj\Debug\Lab03_OOPAdvanced.csproj.CoreCompileInputs.cache
+C:\nguyenduyhung\Lab03_OOPAdvanced\Lab03_OOPAdvanced\obj\Debug\Lab03_OOPAdvanced.exe
+C:\nguyenduyhung\Lab03_OOPAdvanced\Lab03_OOPAdvanced\obj\Debug\Lab03_OOPAdvanced.pdb
