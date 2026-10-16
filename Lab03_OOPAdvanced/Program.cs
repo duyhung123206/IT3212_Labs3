@@ -7,22 +7,24 @@ class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        Console.WriteLine("=== BÀI 8: QUẢN LÝ TÀI LIỆU THƯ VIỆN ===");
+        Console.WriteLine("=== BÀI 9: HỆ THỐNG THANH TOÁN ===");
 
-        // Khởi tạo danh sách tài liệu sử dụng tính đa hình của lớp cha TaiLieu
-        List<TaiLieu> dsTaiLieu = new List<TaiLieu>
+        // Khởi tạo danh sách thanh toán đa hình thông qua interface IPayment
+        List<IPayment> dsThanhToan = new List<IPayment>
         {
-            new Sach { MaTaiLieu = "S01", TenTaiLieu = "Lập trình C# Nâng cao", TacGia = "Đại học Công nghệ Đông Á", SoTrang = 350 },
-            new TapChi { MaTaiLieu = "TC01", TenTaiLieu = "Khoa học Công nghệ Thông tin", SoPhatHanh = 15, ThangPhatHanh = 10 },
-            new LuanVan { MaTaiLieu = "LV01", TenTaiLieu = "Ứng dụng AI trong nông nghiệp", NguoiNghienCuu = "Nguyễn Duy Hưng", ChuyenNganh = "Công nghệ Thông tin" }
+            new ThanhToanTienMat(),
+            new ChuyenKhoan { SoTaiKhoanNganHang = "1903123456789" },
+            new ViDienTu { SoDienThoaiVi = "0987654321" }
         };
 
-        foreach (var tl in dsTaiLieu)
+        decimal soTienGiaoDich = 750000;
+
+        foreach (var tt in dsThanhToan)
         {
-            tl.HienThiThongTin();
+            tt.ProcessPayment(soTienGiaoDich);
         }
 
-        Console.WriteLine("\nNhấn phím bất kỳ để tiếp tục...");
+        Console.WriteLine("\nNhấn phím bất kỳ để tiếp tục bài 10...");
         Console.ReadKey();
     }
 }
