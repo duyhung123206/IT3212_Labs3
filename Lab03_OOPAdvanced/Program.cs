@@ -8,23 +8,20 @@ class Program
         // Hỗ trợ hiển thị tiếng Việt có dấu trong Console
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        Console.WriteLine("--- KIỂM TRA DANH SÁCH ĐA HÌNH (POLYMORPHISM) ---");
+        Console.WriteLine("--- HỆ THỐNG NHÂN VIÊN - TÍNH LƯƠNG ĐA HÌNH ---");
 
-        // Khởi tạo danh sách chứa các đối tượng kiểu lớp cha NguoiHoc
-        List<NguoiHoc> ds = new List<NguoiHoc>();
-        ds.Add(new SinhVienChinhQuy { HoTen = "Nguyễn Duy Hưng", SoTinChi = 18 });
-        ds.Add(new SinhVienLienThong { HoTen = "Trần Văn Bình", SoTinChi = 15 });
-
-        decimal tong = 0;
-        foreach (NguoiHoc item in ds)
+        List<NhanVien> danhSachNV = new List<NhanVien>
         {
-            decimal hocPhi = item.TinhHocPhi(); // Tính đa hình tùy thuộc vào loại đối tượng thực tế
-            tong += hocPhi;
-            Console.WriteLine($"{item.HoTen}: {hocPhi:N0} VNĐ");
-        }
+            new NhanVienVanPhong { MaNV = "VP01", HoTen = "Nguyễn Văn An", LuongCoBan = 5000000, TroCap = 1500000 },
+            new NhanVienKinhDoanh { MaNV = "KD01", HoTen = "Trần Thị Bình", LuongCoBan = 4500000, DoanhThu = 60000000 },
+            new GiangVien { MaNV = "GV01", HoTen = "Nguyễn Duy Hưng", LuongCoBan = 6000000, SoTietDay = 45 }
+        };
 
-        Console.WriteLine($"-----------------------------------");
-        Console.WriteLine($"Tổng học phí toàn bộ danh sách: {tong:N0} VNĐ");
+        foreach (var nv in danhSachNV)
+        {
+            // Tính lương đa hình tùy thuộc vào kiểu thực tế của đối tượng
+            Console.WriteLine($"Mã: {nv.MaNV} | Họ tên: {nv.HoTen} | Loại: {nv.GetType().Name} | Lương thực lĩnh: {nv.TinhLuong():N0} VNĐ");
+        }
 
         Console.ReadKey();
     }
