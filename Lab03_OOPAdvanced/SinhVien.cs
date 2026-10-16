@@ -1,25 +1,38 @@
 ﻿using System;
 
-public class SinhVien : Nguoi
+public class SinhVien : IValidatable, IPrintable
 {
     public string MaSV { get; set; }
+    public string HoTen { get; set; }
     public double DiemTB { get; set; }
 
-    public SinhVien(string ma, string ten, DateTime ngaySinh, double diem)
-        : base(ten, ngaySinh)
+    public SinhVien(string ma, string hoTen, double diem)
     {
         MaSV = ma;
+        HoTen = hoTen;
         DiemTB = diem;
     }
 
-    // Ghi đè phương thức MoTa và tận dụng base.MoTa()
-    public override string MoTa()
+    // Hiện thực hóa interface IValidatable
+    public bool IsValid(out string message)
     {
-        return base.MoTa() + " - " + MaSV + " - " + DiemTB.ToString("N2");
+        if (string.IsNullOrWhiteSpace(MaSV))
+        {
+            message = "Thiếu mã sinh viên";
+            return false;
+        }
+        if (DiemTB < 0 || DiemTB > 10)
+        {
+            message = "Điểm trung bình không hợp lệ (phải từ 0 đến 10)";
+            return false;
+        }
+        message = "Hợp lệ";
+        return true;
     }
 
-    public void HienThi()
+    // Hiện thực hóa interface IPrintable
+    public string ToDisplayText()
     {
-        Console.WriteLine(MoTa());
+        return $"Mã: {MaSV} - Họ tên: {HoTen} - Điểm TB: {DiemTB:N2}";
     }
 }

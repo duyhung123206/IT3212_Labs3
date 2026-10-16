@@ -4,20 +4,31 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Hỗ trợ hiển thị tiếng Việt có dấu trong Console
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        Console.WriteLine("--- KIỂM TRA LỚP TRỪU TƯỢNG HỌC PHÍ ---");
+        Console.WriteLine("--- KIỂM TRA INTERFACE VALIDATABLE & PRINTABLE ---");
 
-        NguoiHoc sv1 = new SinhVienChinhQuy();
-        sv1.HoTen = "Nguyễn Duy Hưng";
-        sv1.SoTinChi = 15;
-        Console.WriteLine($"Sinh viên Chính quy: {sv1.HoTen} - Số tín: {sv1.SoTinChi} - Học phí: {sv1.TinhHocPhi():N0} VNĐ");
+        // Tạo sinh viên thử nghiệm với dữ liệu hợp lệ
+        SinhVien sv1 = new SinhVien("24001296", "Nguyễn Duy Hưng", 8.5);
 
-        NguoiHoc sv2 = new SinhVienLienThong();
-        sv2.HoTen = "Trần Văn A";
-        sv2.SoTinChi = 12;
-        Console.WriteLine($"Sinh viên Liên thông: {sv2.HoTen} - Số tín: {sv2.SoTinChi} - Học phí: {sv2.TinhHocPhi():N0} VNĐ");
+        if (sv1.IsValid(out string msg))
+        {
+            Console.WriteLine("Dữ liệu hợp lệ! Thông tin:");
+            Console.WriteLine(sv1.ToDisplayText());
+        }
+        else
+        {
+            Console.WriteLine($"Lỗi dữ liệu: {msg}");
+        }
+
+        // Tạo sinh viên thử nghiệm với điểm sai để test validation
+        SinhVien sv2 = new SinhVien("24001297", "Lỗi Điểm", 12.0);
+
+        Console.WriteLine("\nKiểm tra sinh viên dữ liệu lỗi:");
+        if (!sv2.IsValid(out string err))
+        {
+            Console.WriteLine($"Phát hiện lỗi: {err}");
+        }
 
         Console.ReadKey();
     }

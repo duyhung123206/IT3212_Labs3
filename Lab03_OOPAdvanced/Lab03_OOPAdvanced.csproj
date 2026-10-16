@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPrintable.cs" />
+    <Compile Include="IValidatable.cs" />
     <Compile Include="Nguoi.cs" />
     <Compile Include="NguoiHoc.cs" />
     <Compile Include="Program.cs" />
