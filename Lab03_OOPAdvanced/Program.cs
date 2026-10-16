@@ -1,34 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
+        // Hỗ trợ hiển thị tiếng Việt có dấu trong Console
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        Console.WriteLine("--- KIỂM TRA INTERFACE VALIDATABLE & PRINTABLE ---");
+        Console.WriteLine("--- KIỂM TRA DANH SÁCH ĐA HÌNH (POLYMORPHISM) ---");
 
-        // Tạo sinh viên thử nghiệm với dữ liệu hợp lệ
-        SinhVien sv1 = new SinhVien("24001296", "Nguyễn Duy Hưng", 8.5);
+        // Khởi tạo danh sách chứa các đối tượng kiểu lớp cha NguoiHoc
+        List<NguoiHoc> ds = new List<NguoiHoc>();
+        ds.Add(new SinhVienChinhQuy { HoTen = "Nguyễn Duy Hưng", SoTinChi = 18 });
+        ds.Add(new SinhVienLienThong { HoTen = "Trần Văn Bình", SoTinChi = 15 });
 
-        if (sv1.IsValid(out string msg))
+        decimal tong = 0;
+        foreach (NguoiHoc item in ds)
         {
-            Console.WriteLine("Dữ liệu hợp lệ! Thông tin:");
-            Console.WriteLine(sv1.ToDisplayText());
-        }
-        else
-        {
-            Console.WriteLine($"Lỗi dữ liệu: {msg}");
+            decimal hocPhi = item.TinhHocPhi(); // Tính đa hình tùy thuộc vào loại đối tượng thực tế
+            tong += hocPhi;
+            Console.WriteLine($"{item.HoTen}: {hocPhi:N0} VNĐ");
         }
 
-        // Tạo sinh viên thử nghiệm với điểm sai để test validation
-        SinhVien sv2 = new SinhVien("24001297", "Lỗi Điểm", 12.0);
-
-        Console.WriteLine("\nKiểm tra sinh viên dữ liệu lỗi:");
-        if (!sv2.IsValid(out string err))
-        {
-            Console.WriteLine($"Phát hiện lỗi: {err}");
-        }
+        Console.WriteLine($"-----------------------------------");
+        Console.WriteLine($"Tổng học phí toàn bộ danh sách: {tong:N0} VNĐ");
 
         Console.ReadKey();
     }
